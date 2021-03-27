@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/topology/mimas/usecase-components/usecases/UsecaseZSL'
+let g:netrw_dirhist_0='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/topology/mimas/usecase-components/usecases'
+let g:netrw_dirhist_9='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/topology/mimas/usecase-components/usecases/UsecaseRTB/pipelines'
+let g:netrw_dirhist_8='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/topology/mimas/usecase-components/usecases/UsecaseRTB'
+let g:netrw_dirhist_7='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/topology/mimas/usecase-components/usecases/UsecaseRTB/pipelines'
+let g:netrw_dirhist_6='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/topology/mimas/usecase-components/usecases/UsecaseRTB'
+let g:netrw_dirhist_5='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/topology/mimas/usecase-components/usecases'
+let g:netrw_dirhist_4='/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/oem/qcom/feature2/chifeature2graphselector/mannar'
+let g:netrw_dirhist_3='/mnt/new-QN3950'
+let g:netrw_dirhist_2='/mnt/new-QN3950/vendor/qcom/proprietary/camx/src/settings/mannar'
