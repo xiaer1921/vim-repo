@@ -14,6 +14,9 @@
 " ============================================================================
 
 " quit if the user doesnt want us or if we are already loaded.
+
+let mapleader = "."
+map <silent> <leader>w :WMToggle<CR>
 if exists("loaded_winmanager")
 	finish
 end
@@ -45,6 +48,18 @@ end
 if !exists(':WMToggle')
 	command -nargs=0 WMToggle :silent call <SID>ToggleWindowsManager()
 end
+
+" Close the winmanager window when a file is selected by chejian
+if !exists('WManager_Close_On_Select')
+    let WManager_Close_On_Select = 0
+endif
+
+" When the winmanager window is toggle opened, move the cursor to the by chejian
+    " winmanager window
+if !exists('WManager_GainFocus_On_ToggleOpen')
+    let WManager_GainFocus_On_ToggleOpen = 0
+endif
+
 
 " WManager and WMclose still exist for backward compatibility, but their use
 " is deprecated because WMToggle has the functionality of both of them.
@@ -97,6 +112,15 @@ let s:numExplorers = 0
 " Line continuation used here
 let s:cpo_save = &cpo
 set cpo&vim
+
+" WManager_Exe_Cmd_No_Acmds
+" Execute the specified Ex command after disabling autocommands by chejian
+function! s:WManager_Exe_Cmd_No_Acmds(cmd)
+    let old_eventignore = &eventignore
+    set eventignore=all
+    exe a:cmd
+    let &eventignore = old_eventignore
+endfunction
 
 "---
 " this function creates a variable 
@@ -383,6 +407,12 @@ function! <SID>StartWindowsManager()
 	if nothingShown
 		echomsg "[ no valid explorers available. winmanager will start when next possible ]"
 	end
+    " Go back to the original window, if WManager_GainFocus_On_ToggleOpen is not
+    " set, Add by chejian
+    if g:WManager_GainFocus_On_ToggleOpen
+        call s:WManager_Exe_Cmd_No_Acmds('wincmd p')
+    endif
+
 endfunction
 
 "---
@@ -451,6 +481,10 @@ function! WinManagerFileEdit(bufName, split)
 			" the fact that we go to the last listed buffer and then open this
 			" buffer automatically protects the @# register.
 			call s:GotoWindow(bufwinnr(bufnr(lastBufferNumber)))
+			"Add by chejian for WManager_Close_On_Select, When we select file, we close WManager window
+			if g:WManager_Close_On_Select
+				close
+			end
 			" now split it or not depending on stuff.
 			if (&modified && !&hidden) || a:split
 				exe 'silent! split '.bufcall
@@ -479,7 +513,6 @@ function! WinManagerFileEdit(bufName, split)
 	end
 
 	let s:commandRunning = 0
-
 	" call Refresh incase this fileopen made some displays invalid.
 	call s:RefreshWinManager()
 	let &report=oldRep

@@ -1,17 +1,7 @@
-filetype plugin indent on
-
-
-"Set mapleader
+"Set mapleader 设置快捷键leader
 let mapleader = ","
-"Fast reloading of the .vimrc
-map <silent> <leader>ss :source ~/.vimrc<cr>
-"Fast editing of .vimrc
-map <silent> <leader>ee :e ~/.vimrc<cr>
-map <silent> <leader>n :set nonu<cr>
-map <silent> <leader>m :set nu<cr>
-"When .vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
 
+"###############快速配置.vimrc #################
 " Platform
 function! MySys()
     if has("win32")
@@ -72,41 +62,34 @@ if MySys() == 'windows'
     behave mswin
 endif
 
+"#########################################
+
+
+"###############基础配置 #################
+filetype plugin indent on
+
 syntax enable
+
 set cursorline
+
 syntax on
 
 "set mouse=a
 
 set helplang=cn
 set hlsearch
+
 colorscheme desert
 "colorscheme darkblue
-map <F2> :nohlsearch<CR>
-filetype plugin indent on
+
 set completeopt=longest,menu
 autocmd FileType c,cpp set shiftwidth=4 | set expandtab
 
 "close lookupfile window by two <Esc>
 nnoremap <buffer> <Esc><Esc> <C-W>q
 inoremap <buffer> <Esc><Esc> <Esc><C-W>q
-let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
-let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
-let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
-let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
-let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
 :hi ModeMsg ctermfg=Green
-"映射LookupFile为,lk
-"nmap <silent> <leader>lk :LUTags<cr>
-"映射LUBufs为,ll
-"nmap <silent> <leader>ll :LUBufs<cr>
-"映射LUWalk为,lw
-"nmap <silent> <leader>lw :LUWalk<cr>
 
-
-
- set tags =/mnt/new-QN3950/vendor/qcom/proprietary/camx/tags
- set tags +=/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/tags
 "开启光亮光标行 
 set cursorline 
 hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white 
@@ -117,50 +100,7 @@ highlight Keyword term=reverse,bold
 highlight Comment cterm=underline ctermfg=red ctermbg=blue
 
 set autochdir
-"启动vim后自动打开taglist窗口
-let Tlist_Auto_Open = 1
-let Tlist_Close_On_Select=1
 
-"不同时显示多个文件的tag，仅显示一个
-let Tlist_Show_One_File = 1
-
-"taglist为最后一个窗口时，退出vim
-let Tlist_Exit_OnlyWindow = 1
-
-"taglist窗口显示在右侧，缺省为左侧
-"let Tlist_Use_Right_Window =1
-
-"设置taglist窗口大小
-"let Tlist_WinHeight = 100
-let Tlist_WinWidth = 32
-
-"显示taglist菜单
-"let Tlist_Show_Menu=1
-
-let Tlist_GainFocus_On_ToggleOpen = 1 
-
-"设置taglist打开关闭的快捷键F8
-"map <silent> <leader>a :TlistToggle<CR>
-
-"更新ctags标签文件快捷键设置
-map <F6> :!ctags -R<CR>
-
-let g:winManagerWidth = 30
-
-"let g:AutoOpenWinManager = 1
-
-"let g:winManagerWindowLayout='FileExplorer'
-"let g:winManagerWindowLayout="TagList|FileExplorer,BufExplorer" 
-"let g:winManagerWindowLayout='FileExplorer|TagList'
-"map <silent> <leader>j :WMToggle<CR>
-
-let g:SuperTabRetainCompletionType=2
-let g:SuperTabDefaultCompletionType="<C-X><C-O>"
-
-":set cscopequickfix=s-,c-,d-,i-,t-,e-
-
-":cs add /libvirt/cscope.out /libvirt
-":cs add /mnt/mh4_new/cscope.out /mnt/mh4_new
 
 :set backspace=indent,eol,start
 syntax enable
@@ -182,6 +122,64 @@ set shiftwidth=4
 
 set nocompatible              " be iMproved, required
 "filetype off                  " required
+
+"#########################################
+
+
+"###############插件ctags+winmanager+cscope##########
+
+ set tags =/mnt/new-QN3950/vendor/qcom/proprietary/camx/tags
+ set tags +=/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/tags
+ set tags +=/mnt/new-QN3950/kernel/msm-5.4/tags
+
+"启动vim后自动打开taglist窗口
+let Tlist_Auto_Open = 0
+
+"选择以后，自动关闭
+let Tlist_Close_On_Select=1
+"需要自己来实现winmanager的，实现见winmanager.vim
+let WManager_Close_On_Select=1
+
+"不同时显示多个文件的tag，仅显示一个
+let Tlist_Show_One_File = 1
+
+"taglist为最后一个窗口时，退出vim
+let Tlist_Exit_OnlyWindow = 1
+
+"taglist窗口显示在右侧，缺省为左侧
+"let Tlist_Use_Right_Window =1
+
+"设置taglist窗口大小
+"let Tlist_WinHeight = 100
+let Tlist_WinWidth = 32
+
+"显示taglist菜单
+"let Tlist_Show_Menu=1
+let Tlist_GainFocus_On_ToggleOpen = 1 
+let WManager_GainFocus_On_ToggleOpen = 1
+
+let g:winManagerWidth = 30
+
+"let g:AutoOpenWinManager = 1
+
+"这里不采用winManagerWindowLayout管理，而是taglist和winmanager通过两个快捷键快速启动
+"策略为： 启动以后光标设置在对应taglist或者winmanager窗口，选择以后自动关闭窗口，winmanager需要自己通过wincmd来实现对应功能
+
+"let g:winManagerWindowLayout='FileExplorer'
+"let g:winManagerWindowLayout="TagList|FileExplorer,BufExplorer" 
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+"map <silent> <leader>j :WMToggle<CR>
+
+let g:SuperTabRetainCompletionType=2
+let g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
+"cscope配置见cscope_maps.vim
+":set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+"#########################################
+
+
+"###############插件管理Vundle + 自动匹配YouCompleteMe##########
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -266,19 +264,24 @@ filetype plugin indent on    " required
 
 """"""""""""""""""""""""""""""
 
-" Set mapleader
-let mapleader = ","
+"###############################
 
+
+"###############ag+fzf##########
 "...........ag................
 set runtimepath^=~/.vim/bundle/ag
-set runtimepath^=~/.vim/bundle/fzf
 nnoremap <leader>f :silent execute("Ag! " . expand("<cword>"))<CR>
+"...........ag...............
 
+"...........fzf...............
+"需要额外在~/.bashrc增加如下:
+"1. export FZF_DEFAULT_COMMAND='find /mnt/new-QN3950'
+"2. export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2>  /dev/null | head -500'"
 
-
+"如果fzf不是使用bundle安装的，需要自己安装./install --all， 然后将fzf.vim 复制到plugin下
+set runtimepath^=~/.vim/bundle/fzf
 "FZF config
 "nnoremap <leader>a :silent execute("FZF")<CR>
-"...........ag...............
 
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
@@ -288,3 +291,23 @@ nmap <C-p> :Files<CR>
 nmap <C-e> :Buffers<CR>
 nmap <C-h> :History<CR>
 let g:fzf_action = { 'ctrl-e': 'edit' }
+
+"...........fzf...............
+"###############################
+
+"###############快捷键##########
+"Fast reloading of the .vimrc
+map <silent> <leader>ss :source ~/.vimrc<cr>
+"Fast editing of .vimrc
+map <silent> <leader>ee :e ~/.vimrc<cr>
+map <silent> <leader>n :set nonu<cr>
+map <silent> <leader>m :set nu<cr>
+"When .vimrc is edited, reload it
+autocmd! bufwritepost .vimrc source ~/.vimrc
+
+"更新ctags标签文件快捷键设置
+map <F6> :!ctags -R<CR>
+
+"taglist和winmanager的快捷键设置在对应的.vim文件中，使用.引导
+"###############################
+
