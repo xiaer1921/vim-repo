@@ -131,6 +131,7 @@ set nocompatible              " be iMproved, required
  set tags =/mnt/new-QN3950/vendor/qcom/proprietary/camx/tags
  set tags +=/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/tags
  set tags +=/mnt/new-QN3950/kernel/msm-5.4/tags
+ set tags +=/github/linux/tags
 
 "启动vim后自动打开taglist窗口
 let Tlist_Auto_Open = 0

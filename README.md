@@ -14,7 +14,8 @@
 export FZF_DEFAULT_COMMAND='find /mnt/new-QN3950'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
-
+#ses wincmd
+https://github.com/yssl/twcmd.vim
 
 #v.1
 1.对.vimrc进行了整理
