@@ -1,5 +1,6 @@
 "Set mapleader 设置快捷键leader
 let mapleader = ","
+filetype plugin on
 
 "###############快速配置.vimrc #################
 " Platform
@@ -128,9 +129,11 @@ set nocompatible              " be iMproved, required
 
 "###############插件ctags+winmanager+cscope##########
 
- set tags =/mnt/new-QN3950/vendor/qcom/proprietary/camx/tags
- set tags +=/mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/tags
- set tags +=/mnt/new-QN3950/kernel/msm-5.4/tags
+ set tags +=/mnt/pdx225-dev/target/vendor/qcom/proprietary/chi-cdk/tags
+ set tags +=/mnt/pdx225-dev/target/vendor/qcom/proprietary/camx/tags
+ set tags +=/mnt/pdx225-dev/target/kernel/msm-5.4/tags
+ set tags +=/mnt/pdx225-dev/target/frameworks/tags
+ set tags +=/mnt/pdx225-dev/target/hardware/tags
  set tags +=/github/linux/tags
 
 "启动vim后自动打开taglist窗口
@@ -200,7 +203,7 @@ Plugin 'tpope/vim-fugitive'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
+"Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -211,7 +214,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " All of your Plugins must be added before the following line
 
 call vundle#end()            " required
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 
 let g:ycm_confirm_extra_conf=0
 let g:ycm_server_python_interpreter='/usr/bin/python'
@@ -312,3 +315,13 @@ map <F6> :!ctags -R<CR>
 "taglist和winmanager的快捷键设置在对应的.vim文件中，使用.引导
 "###############################
 
+"###############add for vim read markdown#################
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'iamcco/markdown-preview.nvim' 
+"取消折叠
+autocmd BufNewFile,BufRead *.md set nofoldenable
+"set foldlevel=9999
+"###############add for vim read markdown#################
+
+let g:mkdp_auto_start = 1

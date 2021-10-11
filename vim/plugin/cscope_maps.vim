@@ -37,23 +37,17 @@ if has("cscope")
 
     " check cscope for definition of a symbol before checking ctags: set to 1
     " if you want the reverse search order.
-    set csto=0
+    set csto=1
 
     " add any cscope database in current directory
     if filereadable("cscope.out")
-     cs add /mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/cscope.out /mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk
-    cs add /mnt/new-QN3950/vendor/qcom/proprietary/camx/cscope.out /mnt/new-QN3950/vendor/qcom/proprietary/camx
     cs add /github/linux/cscope.out /github/linux
  
     " else add the database pointed to by environment variable 
     elseif $CSCOPE_DB != ""
-      cs add /mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/cscope.out /mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk
-    cs add /mnt/new-QN3950/vendor/qcom/proprietary/camx/cscope.out /mnt/new-QN3950/vendor/qcom/proprietary/camx
     cs add /github/linux/cscope.out /github/linux
  
     endif
-    cs add /mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk/cscope.out /mnt/new-QN3950/vendor/qcom/proprietary/chi-cdk
-    cs add /mnt/new-QN3950/vendor/qcom/proprietary/camx/cscope.out /mnt/new-QN3950/vendor/qcom/proprietary/camx
     cs add /github/linux/cscope.out /github/linux
  
 
