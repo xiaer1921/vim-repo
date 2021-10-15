@@ -26,3 +26,4 @@ function! g:Open_browser(url)
     silent exe '!lemonade open 'a:url
 endfunction
 let g:mkdp_browserfunc = 'g:Open_browser'
+set nocscopeverbose
