@@ -94,7 +94,9 @@ alias zshconfig='vi ~/.zshrc'
 alias nvimconfig='vim ~/.config/nvim/init.vim'
 alias vim='nvim'
 
-export FZF_BASE=/github/ohmyzsh/plugins/fzf
+#~/.oh-my-zsh is my ohmyzsh repo
+export FZF_BASE=~/.oh-my-zsh/plugins/fzf
+
 export FZF_DEFAULT_COMMAND='find /mnt/pdx225-dev/target/vendor/qcom/proprietary/chi-cdk /mnt/pdx225-dev/target/vendor/qcom/proprietary/camx /mnt/pdx225-dev/target/kernel/msm-5.4/ /mnt/pdx225-dev/target/vendor/qcom/proprietary/devicetree/ /mnt/pdx225-dev/target/vendor/qcom/proprietary/devicetree/qcom/camera/'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 export PATH=$PATH:/github/cmake-3.6.0-Linux-x86_64/bin
