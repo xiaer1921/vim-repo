@@ -6,14 +6,20 @@ This is a vim-repo including vim, neovim, zsh, vim-markdown, vim-plug, tmux, tag
 
 After git clone, we need config vim, zsh/bash, tmux
 ```sh
-cp vimrc ~/.vimrc
-cp tmux.conf ~/.tmux.conf
-cp init.vim ~/.config/nvim/.
-cp -r vim ~/.vim
+cp vim-conf/vimrc ~/.vimrc
+cp -r vim-conf/vim ~/.vim
+cp -r tmux-conf/tmux.conf ~/.tmux.conf
+cp neovim/init.vim ~/.config/nvim/.
 #zsh
-cp zshrc ~/.zshrc
+cp sh-config/zshrc ~/.zshrc
 #bash
-cp bashrc ~/.bashrc
+cp sh-config/bashrc ~/.bashrc
+
+#Vundle
+https://github.com/gmarik/Vundle.vim.git ~/.vim/plugin/Vundle.vim
+
+#plug-vim
+cp vim-conf/vim-plug/plug.vim  /usr/share/nvim/runtime/autoload/.
 ```
 
 you can diff your config and my, then update vim plugin by `:PluginIntall` or `:PluginInstall` in vim editor

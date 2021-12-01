@@ -82,12 +82,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias cd0='cd /github/hexo-blog/source/_posts'
-alias cd1='cd /mnt/pdx225-dev/target/vendor/qcom/proprietary/chi-cdk/'
-alias cd2='cd /mnt/pdx225-dev/target/vendor/qcom/proprietary/camx'
-alias cd3='cd /mnt/pdx225-dev/target/vendor/qcom/proprietary/chi-cdk/oem/qcom/bin'
 alias cd4='cd /kvm-qemu-system/linux-vmlinux'
-alias ps1='adb shell ps -A | grep -n "camera"'
-alias cts='cd /mnt/cts/CTS/android-cts/tools'
 alias cscope-note='cscope -Rbkq'
 
 # Alias definitions.
