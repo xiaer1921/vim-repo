@@ -44,3 +44,7 @@ WManager_Close_On_Select: 在跳转到选择的文件窗口后同时关闭wimman
     - neovim配置, 和markdown-preview配合使用，实时预览markdown
     - zsh配置
     - tmux默认开启zsh
+
+- V3.3 调整文件树
+
+- V3.4 安装neovim, tmux rename窗口之后固定窗口名，不随着当前路径改变
