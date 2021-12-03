@@ -15,8 +15,8 @@ cp sh-config/zshrc ~/.zshrc
 #bash
 cp sh-config/bashrc ~/.bashrc
 
-#Vundle
-https://github.com/gmarik/Vundle.vim.git ~/.vim/plugin/Vundle.vim
+#Vundle git clone to runtime patch
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 #plug-vim
 cp vim-conf/vim-plug/plug.vim  /usr/share/nvim/runtime/autoload/.
