@@ -22,7 +22,15 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp vim-conf/vim-plug/plug.vim  /usr/share/nvim/runtime/autoload/.
 ```
 
-you can diff your config and my, then update vim plugin by `:PluginIntall` or `:PluginInstall` in vim editor
+you can diff your config and my, then update vim plugin in vim editor
+
+```
+
+:source %
+:PluginInstall
+:PlugInstall
+
+```
 
 # history
 
